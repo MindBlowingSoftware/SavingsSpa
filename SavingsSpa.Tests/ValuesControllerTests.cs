@@ -34,13 +34,13 @@ namespace SavingsSpa.Tests
             inputSet.InterestRate = null;
             inputSet.InstrumentType = InstrumentType.TermDeposit;
             inputSet.PayoutType = PayoutType.Cumulative;
-            Assert.AreEqual(HttpStatusCode.BadRequest,_controller.Get(inputSet).StatusCode);
+            Assert.AreEqual(HttpStatusCode.BadRequest,_controller.Put(inputSet).StatusCode);
 
             inputSet.InstrumentType = InstrumentType.RecurringDeposit;
-            Assert.AreEqual(HttpStatusCode.BadRequest, _controller.Get(inputSet).StatusCode);
+            Assert.AreEqual(HttpStatusCode.BadRequest, _controller.Put(inputSet).StatusCode);
 
             inputSet.InstrumentType = InstrumentType.SimpleSavings;
-            Assert.AreEqual(HttpStatusCode.BadRequest, _controller.Get(inputSet).StatusCode);
+            Assert.AreEqual(HttpStatusCode.BadRequest, _controller.Put(inputSet).StatusCode);
         }
 
         [Test]
@@ -52,10 +52,10 @@ namespace SavingsSpa.Tests
             inputSet.InterestRate = 0;
             inputSet.InstrumentType = InstrumentType.TermDeposit;
             inputSet.PayoutType = PayoutType.Cumulative;
-            Assert.AreEqual(HttpStatusCode.BadRequest, _controller.Get(inputSet).StatusCode);
+            Assert.AreEqual(HttpStatusCode.BadRequest, _controller.Put(inputSet).StatusCode);
 
             inputSet.InstrumentType = InstrumentType.RecurringDeposit;
-            Assert.AreEqual(HttpStatusCode.BadRequest, _controller.Get(inputSet).StatusCode);
+            Assert.AreEqual(HttpStatusCode.BadRequest, _controller.Put(inputSet).StatusCode);
         }
 
         [Test]
@@ -67,7 +67,7 @@ namespace SavingsSpa.Tests
             inputSet.InterestRate = 0;
             inputSet.InstrumentType = InstrumentType.TermDeposit;
             inputSet.PayoutType = PayoutType.Cumulative;
-            Assert.AreEqual(HttpStatusCode.BadRequest, _controller.Get(inputSet).StatusCode);
+            Assert.AreEqual(HttpStatusCode.BadRequest, _controller.Put(inputSet).StatusCode);
         }
 
         [Test]
@@ -79,7 +79,7 @@ namespace SavingsSpa.Tests
             inputSet.InterestRate = 0;
             inputSet.InstrumentType = InstrumentType.RecurringDeposit;
             inputSet.PayoutType = PayoutType.Cumulative;
-            Assert.AreEqual(HttpStatusCode.BadRequest, _controller.Get(inputSet).StatusCode);
+            Assert.AreEqual(HttpStatusCode.BadRequest, _controller.Put(inputSet).StatusCode);
         }
 
         [Test]
@@ -93,7 +93,7 @@ namespace SavingsSpa.Tests
             inputSet.PayoutType = PayoutType.Cumulative;
             inputSet.TermLengthType = TermLengthType.Month;
 
-            Assert.AreEqual(HttpStatusCode.OK, _controller.Get(inputSet).StatusCode);
+            Assert.AreEqual(HttpStatusCode.OK, _controller.Put(inputSet).StatusCode);
         }
     }
 }

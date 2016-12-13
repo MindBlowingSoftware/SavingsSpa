@@ -16,13 +16,13 @@ namespace SavingsSpa.Tests
     {
         public InputSet _inputSet;
         public List<ResultSet> _resultSet;
-        private ValuesController _controller;
+        private Calculator _calculator;
 
         [SetUp]
         public void Given()
         {
             var validator = new InputSetValidator();
-            _controller = new ValuesController(validator);
+            _calculator = new Calculator();
             _inputSet = new InputSet();
             _inputSet.Principle = 20000;
             _inputSet.TermLength = 60;
@@ -33,7 +33,7 @@ namespace SavingsSpa.Tests
             _inputSet.MonthlySaving = 3000;
             _inputSet.CompoundedDuration = CompoundedDuration.Annually;
 
-            _resultSet = _controller.ResultSets(_inputSet);
+            _resultSet = _calculator.ResultSets(_inputSet);
         }
 
 
@@ -54,7 +54,7 @@ namespace SavingsSpa.Tests
         {
             _inputSet.Principle = 0;
             _inputSet.InstrumentType = InstrumentType.RecurringDeposit;
-            _resultSet = _controller.ResultSets(_inputSet);
+            _resultSet = _calculator.ResultSets(_inputSet);
             Assert.AreEqual(216032, _resultSet.Select(r => r.Value).Max());
         }
 
@@ -63,7 +63,7 @@ namespace SavingsSpa.Tests
         {
             _inputSet.Principle = 20000;
             _inputSet.InstrumentType = InstrumentType.RecurringDeposit;
-            _resultSet = _controller.ResultSets(_inputSet);
+            _resultSet = _calculator.ResultSets(_inputSet);
             Assert.AreEqual(244384, _resultSet.Select(r => r.Value).Max());
         }
     }
